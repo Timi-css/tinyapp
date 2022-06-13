@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/Timi-css/tinyapp/issues"
   },
-  "homepage": "https://github.com/Timi-css/tinyapp#readme"
+  "homepage": "https://github.com/Timi-css/tinyapp#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }

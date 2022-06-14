@@ -11,8 +11,13 @@ const urlDatabase = {
 
 app.get("/urls", (req, res) => {
   const templateVars = { urls: urlDatabase };
-  rest.render("urls_index", templateVars);
+  res.render("urls_index", templateVars);
 });
+
+// app.get("/urls/:shortURL", (req, res) => {
+//   const templateVars = { shortURL: req.params.shortURL, longURL: /* What goes here? */ };
+//   res.render("urls_show", templateVars);
+// });
 
 app.get("/", (req, res) => {
   res.send("Hello!");

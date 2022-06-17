@@ -54,7 +54,6 @@ app.post("/login", (req, res) => {
    res.send("Please fill in email and password")
    return;
  }
-
   const user = fetchUserWithEmail(email);
 
 

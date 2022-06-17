@@ -18,5 +18,20 @@
         <a class="nav-item nav-link" href="/urls/new">Create New URL</a>
       </div>
     </div>
+    <!-- ====================================================================== -->
+    <% if(user) {%>
+    <span>Logged in as: <%= user.email %> </span>
+    <form method="POST" action="/logout">
+      <button class="btn btn-primary btn-sm" type="submit">Logout</button>
+    </form>
+    <% } else {%>
+    <form method="POST" action="/login">
+      <input type="text" name="username" placeholder="Username" />
+      <button class="btn btn-primary btn-sm" type="submit">Sign In</button>
+    </form>
+    <a href="/register" class="btn btn-primary btn-sm ml-1">Register</a>
+
+    <% } %>
+    <!-- ====================================================================== -->
   </nav>
 </header>

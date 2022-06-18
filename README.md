@@ -31,5 +31,5 @@ TinyApp is a full stack web application built with Node and Express that allows 
 ## Final Product
 
 !["Screenshot of URLs page"](https://github.com/Timi-css/tinyapp/blob/master/docs/Urls.png)
-!["Screenshot of register page"](https://github.com/Timi-css/tinyapp/blob/master/docs/Register.png)
+!["Screenshot of register page"](https://github.com/Timi-css/tinyapp/blob/master/docs/Registration.png)
 !["Screenshot of login page"](https://github.com/Timi-css/tinyapp/blob/master/docs/Login.png)

@@ -210,32 +210,12 @@ app.get("/urls/:shortURL", (req, res) => {
 // ==========================================================================
 
 app.get("/", (req, res) => {
-  res.send("Hello!");
-});
-
-// ==========================================================================
-
-app.get("/urls.json", (req, res) => {
-  res.json(urlDatabase);
-});
-
-// ==========================================================================
-
-app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
-});
-
-// ==========================================================================
-
-app.get("/set", (req, res) => {
-  const a = 1;
-  res.send(`a = ${a}`);
-});
-
-// ==========================================================================
-
-app.get("/fetch", (req, res) => {
-  res.send(`a = ${a}`);
+  const username = req.session.user_id;
+  if (username) {
+    res.redirect("/urls");
+  } else {
+    res.redirect("/login");
+  }
 });
 
 // ==========================================================================
@@ -243,6 +223,24 @@ app.get("/fetch", (req, res) => {
 app.get("/hello", (req, res) => {
   res.send("<html><body>Hello <b>World</b><body></html>\n");
 });
+
+app.get("/u/:shortUrl", (req, res) => {
+  const shortURL = req.params.shortUrl;
+  const url = urlDatabase[shortUrl];
+
+  if (url) {
+    res.redirect(url.longURL);
+    return;
+  }
+
+  res.send("Does not exist");
+});
+
+app.listen(PORT, () => {
+  console.log(`TinyApp listening on port ${PORT}`);
+});
+
+//
 
 // ==========================================================================
 

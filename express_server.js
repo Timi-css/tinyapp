@@ -150,7 +150,17 @@ app.get("/register", (req, res) => {
 app.get("/urls", (req, res) => {
   const userId = req.session.user_id;
   const user = users[userId];
-  const templateVars = { urls: urlDatabase, user: user };
+  const matchingURls = {};
+
+  for (url in urlDatabase) {
+    const userID = urlDatabase[url].userID;
+    if (userId == userID) {
+      matchingURls[url] = urlDatabase[url];
+    }
+  }
+
+  const templateVars = { urls: matchingURls, user: user };
+
   if (userId) {
     res.render("urls_index", templateVars);
   } else {
@@ -192,7 +202,7 @@ app.post("/urls", (req, res) => {
   const shortURL = generateRandomString();
   urlDatabase[shortURL] = {
     longURL: req.body.longURL,
-    userID: req.session.userID,
+    userID: req.session.user_id,
   };
   console.log(urlDatabase); //add new urlObject to database
   // console.log(shortURL);

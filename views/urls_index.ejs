@@ -33,9 +33,8 @@
                 <%= urls[url].longURL %>
               </td>
               <td>
-                <form method="GET" action=/urls/<%=url %>">
-                  <button class="btn btn-outline-primary">Edit</button>
-                </form>
+                <a class="btn btn-outline-primary" href="/urls/<%=url %>">Edit</a>
+
               </td>
               <td>
                 <form method="POST" action="/urls/<%=url %>/delete">

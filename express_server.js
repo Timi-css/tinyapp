@@ -182,7 +182,10 @@ app.get("/urls/:shortURL", (req, res) => {
 app.post("/urls", (req, res) => {
   // console.log(req.body);  // Log the POST request body to the console
   const shortURL = generateRandomString();
-  urlDatabase[shortURL] = req.body.longURL;
+  urlDatabase[shortURL] = {
+    longURL: req.body.longURL,
+    userID: req.session.userID,
+  };
   console.log(urlDatabase); //add new urlObject to database
   // console.log(shortURL);
   res.redirect(`urls/${shortURL}`);

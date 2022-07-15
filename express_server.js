@@ -186,6 +186,10 @@ app.get("/urls/new", (req, res) => {
 
 app.get("/urls/:shortURL", (req, res) => {
   const userId = req.session.user_id;
+  const urlObj = urlDatabase[req.params.shortURL];
+  if (!urlObj) {
+    res.end("This is not foud!");
+  }
   const templateVars = {
     shortURL: req.params.shortURL,
     longURL: urlDatabase[req.params.shortURL].longURL,

@@ -192,7 +192,15 @@ app.get("/urls/:shortURL", (req, res) => {
     user: users[userId] || null,
   };
   console.log("template", templateVars);
-  res.render("urls_show", templateVars);
+  if (userId) {
+    if (userId == urlDatabase[req.params.shortURL].userID) {
+      res.render("urls_show", templateVars);
+    } else {
+      res.end("You do not have permission to this page!");
+    }
+  } else {
+    res.redirect("/login");
+  }
 });
 
 // ==========================================================================

@@ -246,7 +246,7 @@ app.get("/hello", (req, res) => {
 });
 
 app.get("/u/:shortUrl", (req, res) => {
-  const shortURL = req.params.shortUrl;
+  const shortUrl = req.params.shortUrl;
   const url = urlDatabase[shortUrl];
 
   if (url) {

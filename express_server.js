@@ -63,6 +63,9 @@ const urlDatabase = {
 // ==========================================================================
 // Login route
 app.post("/login", (req, res) => {
+  if (req.session.user_id) {
+    res.redirect("/urls");
+  }
   const email = req.body.email;
   const password = req.body.password;
   if (email === "" || password === "") {
@@ -109,6 +112,9 @@ app.post("/logout", (req, res) => {
 
 // ================REGISTRATION ENDPOINT=======================================
 app.post("/register", (req, res) => {
+  if (req.session.user_id) {
+    res.redirect("/urls");
+  }
   const userId = generateRandomString();
   const email = req.body.email;
   const userEmail = users[email];
@@ -137,6 +143,9 @@ app.post("/register", (req, res) => {
 });
 // ===========================================================================
 app.get("/register", (req, res) => {
+  if (req.session.user_id) {
+    res.redirect("/urls");
+  }
   const userId = req.session.user_id;
   const user = users[userId];
   const templateVars = { urls: urlDatabase, user: user };

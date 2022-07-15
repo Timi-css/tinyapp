@@ -151,7 +151,11 @@ app.get("/urls", (req, res) => {
   const userId = req.session.user_id;
   const user = users[userId];
   const templateVars = { urls: urlDatabase, user: user };
-  res.render("urls_index", templateVars);
+  if (userId) {
+    res.render("urls_index", templateVars);
+  } else {
+    res.redirect("/login");
+  }
 });
 // ==========================================================================
 
@@ -159,7 +163,11 @@ app.get("/urls/new", (req, res) => {
   const userId = req.session.user_id;
   const user = users[userId];
   const templateVars = { urls: urlDatabase, user: user };
-  res.render("urls_new", templateVars);
+  if (userId) {
+    res.render("urls_new", templateVars);
+  } else {
+    res.redirect("/login");
+  }
 });
 
 // ==========================================================================
